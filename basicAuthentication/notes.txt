@@ -1,0 +1,2 @@
+HTTP Basic Authentication is a mechanism in which the server challenges anyone requesting for information and get a response in the form of a username and password. 
+The information the server receives is encoded with base-64 and passed into the Authorization header.
