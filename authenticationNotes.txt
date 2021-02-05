@@ -1,0 +1,25 @@
+Basic Authentication
+====================
+Associate authentication middleware with a route:
+e.g. router.get('/secret', authMiddleware);
+
+user navigates to this route
+check for existence of request.headers.authorization
+
+request.headers.authorization does not exist
+--------------------------------------------
+Send a response:
+	res.statusCode = 401;  
+    res.setHeader('WWW-Authenticate', 'Basic realm="Secure Area"');
+	res.end('<html><body>Need some credentials</body></html>');
+	
+This header and status code prompts browser to request username/password
+username:password in base64 passed back to server in next request
+- request.headers.authorization
+
+request.headers.authorization does exist
+----------------------------------------
+Extract username and password from request.headers.authorization
+Check against known credentials
+
+	
