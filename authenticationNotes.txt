@@ -20,6 +20,6 @@ username:password in base64 passed back to server in next request
 request.headers.authorization does exist
 ----------------------------------------
 Extract username and password from request.headers.authorization
-Check against known credentials
+Check against known credentials - probably in DB
 
 	

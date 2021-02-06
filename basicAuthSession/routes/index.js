@@ -49,14 +49,14 @@ function authMiddleware(req, res, next) {
 
         if((username == 'squoink') && (password == 'oldpeculier')) {   // Is the username/password correct? Check entries in database here!
 
-            // can add information here. Will never be >1 as we don't have a session
-            if (req.viewCount) {
-                req.viewCount++;       
+            // can add information here. 
+            if (req.session.authViewCount) {
+                req.session.authViewCount++;       
             } else {
-                req.viewCount = 1;
+                req.session.authViewCount = 1;
             }
             res.statusCode = 200;  // OK
-            res.end(`<html><body>Congratulations - credentials accepted! Viewcount = ${req.viewCount}</body></html>`);
+            res.end(`<html><body>Congratulations - credentials accepted! Viewcount = ${req.session.authViewCount}</body></html>`);
         }
         else {
             res.statusCode = 401; // Force them to retry authentication

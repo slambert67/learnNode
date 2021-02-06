@@ -1,6 +1,8 @@
 const express = require('express');
 const express_session = require('express-session');  // See https://www.npmjs.com/package/express-session
 const mongoose = require('mongoose');
+const routes = require('./routes');
+
 
 // package documentation - https://www.npmjs.com/package/connect-mongo
 // session data (store) can be stored in multiple locations inc. in memory
@@ -61,8 +63,11 @@ app.get('/', (req, res, next) => {
     } else {
         req.session.viewCount = 1;
     }
-    console.log(req.session);
-    res.send(`<h1>Hello world (sessions)</h1>`);
+    //console.log(req.session);
+    res.send(`<h1>Hello world ${req.session.viewCount}</h1>`);
 });
+
+// Imports all of the routes from ./routes/index.js
+app.use(routes);
 
 app.listen(3000);
